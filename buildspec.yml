@@ -23,8 +23,7 @@ phases:
       - IMAGE_URI="$REPOSITORY_URI:$IMAGE_TAG"
       - echo "Full image URI: $IMAGE_URI"
       - printf '[{"name":"nginx","imageUri":"%s"}]' "$IMAGE_URI" > imagedefinitions.json
-      - echo Contents of imagedefinitions.json:
-      - cat imagedefinitions.json
+
 
 
 artifacts:
