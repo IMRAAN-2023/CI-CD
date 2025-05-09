@@ -18,9 +18,14 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - docker push $REPOSITORY_URI:latest
       - echo Writing image definitions...
-      - printf '[{"name":"nginx","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - echo "REPOSITORY_URI=$REPOSITORY_URI"
+      - echo "IMAGE_TAG=$IMAGE_TAG"
+      - IMAGE_URI="$REPOSITORY_URI:$IMAGE_TAG"
+      - echo "Full image URI: $IMAGE_URI"
+      - printf '[{"name":"nginx","imageUri":"%s"}]' "$IMAGE_URI" > imagedefinitions.json
       - echo Contents of imagedefinitions.json:
       - cat imagedefinitions.json
+
 
 artifacts:
   files: imagedefinitions.json
